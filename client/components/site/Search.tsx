@@ -5,6 +5,10 @@ import { FILES } from "@/data/files";
 import { BUNDLES } from "@/data/bundles";
 import { fetchYouTubeTitles } from "@/lib/yt";
 
+// Lightweight preindexing for faster substring queries on large lists
+const FILES_INDEX = FILES.map((f) => ({ text: `${f.name} ${f.desc} ${f.tag}`.toLowerCase(), name: f.name }));
+const BUNDLES_INDEX = BUNDLES.map((b) => ({ text: `${b.title} ${b.items.join(" ")}`.toLowerCase(), id: b.id, title: b.title }));
+
 export default function Search({
   open,
   onClose,
@@ -21,9 +25,7 @@ export default function Search({
     const query = q.trim().toLowerCase();
     if (!query) return [] as { label: string; sub: string; href: string }[];
 
-    const includes = (s: string) => s.toLowerCase().includes(query);
-
-    const shorts = SHORTS.filter((s) => includes(ytTitles[s.id] || s.title)).map(
+    const shorts = SHORTS.filter((s) => (ytTitles[s.id] || s.title).toLowerCase().includes(query)).map(
       (s) => ({
         label: ytTitles[s.id] || s.title,
         sub: "Shorts",
@@ -31,16 +33,16 @@ export default function Search({
       }),
     );
 
-    const files = FILES.filter((f) => includes(`${f.name} ${f.desc} ${f.tag}`)).map((f) => ({
-      label: f.name,
+    const files = FILES_INDEX.filter((fi) => fi.text.includes(query)).map((fi) => ({
+      label: fi.name,
       sub: "Download",
-      href: `/downloads?f=${encodeURIComponent(f.name)}`,
+      href: `/downloads?f=${encodeURIComponent(fi.name)}`,
     }));
 
-    const bundles = BUNDLES.filter((b) => includes(`${b.title} ${b.items.join(" ")}`)).map((b) => ({
-      label: b.title,
+    const bundles = BUNDLES_INDEX.filter((bi) => bi.text.includes(query)).map((bi) => ({
+      label: bi.title,
       sub: "Download Pack",
-      href: `/downloads?bundle=${encodeURIComponent(b.id)}`,
+      href: `/downloads?bundle=${encodeURIComponent(bi.id)}`,
     }));
 
     return [...shorts, ...files, ...bundles].slice(0, 16);
