@@ -144,21 +144,21 @@ export function Layout({ children }: PropsWithChildren) {
               <NavLink
                 to="/"
                 onClick={() => setMobileOpen(false)}
-                className="px-4 py-2 rounded-xl bg-white/10 border border-white/20 text-white"
+                className="px-4 py-2 rounded-xl bg-[#0b1a14]/60 border border-[#0f4b2e]/60 text-white"
               >
                 Home
               </NavLink>
               <NavLink
                 to="/shorts"
                 onClick={() => setMobileOpen(false)}
-                className="px-4 py-2 rounded-xl bg-white/10 border border-white/20 text-white"
+                className="px-4 py-2 rounded-xl bg-[#0b1a14]/60 border border-[#0f4b2e]/60 text-white"
               >
                 Shorts
               </NavLink>
               <NavLink
                 to="/downloads"
                 onClick={() => setMobileOpen(false)}
-                className="px-4 py-2 rounded-xl bg-white/10 border border-white/20 text-white"
+                className="px-4 py-2 rounded-xl bg-[#0b1a14]/60 border border-[#0f4b2e]/60 text-white"
               >
                 Download
               </NavLink>
