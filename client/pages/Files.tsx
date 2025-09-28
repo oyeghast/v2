@@ -1,33 +1,16 @@
 import Reveal from "@/components/site/Reveal";
 import { FILES, type FileItem } from "@/data/files";
 import { BUNDLES } from "@/data/bundles";
-import { useEffect, useMemo, useRef } from "react";
+import { useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
+import { usePinnedScroll } from "@/hooks/use-pinned-scroll";
 
 export default function Files() {
   const [params] = useSearchParams();
 
-  const scrolledRef = useRef(false);
-  useEffect(() => {
-    const q = params.get("f");
-    if (!q) return;
-    if (scrolledRef.current) return;
-    const el = document.getElementById(`file-${encodeURIComponent(q)}`);
-    if (el) {
-      scrolledRef.current = true;
-      const scrollNow = () => el.scrollIntoView({ behavior: "auto", block: "start" });
-      scrollNow();
-      const r1 = requestAnimationFrame(scrollNow);
-      const t2 = setTimeout(scrollNow, 700);
-      el.classList.add("search-highlight");
-      const t = setTimeout(() => el.classList.remove("search-highlight"), 2600);
-      return () => {
-        cancelAnimationFrame(r1);
-        clearTimeout(t2);
-        clearTimeout(t);
-      };
-    }
-  }, [params]);
+  const fileName = params.get("f");
+  const targetEl = fileName ? document.getElementById(`file-${encodeURIComponent(fileName)}`) : null;
+  usePinnedScroll(targetEl, { durationMs: 1600, block: "start", behavior: "auto" });
 
   const activeBundle = useMemo(() => {
     const id = params.get("bundle");
