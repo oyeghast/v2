@@ -55,7 +55,7 @@ export function Layout({ children }: PropsWithChildren) {
       <Parallax />
 
       <header className="sticky top-0 z-40">
-        <div className="backdrop-blur-2xl bg-white/40 dark:bg-slate-900/50 border-b border-white/30">
+        <div className="backdrop-blur-md bg-[#05160e]/85 border-b border-[#0f4b2e]/70">
           <nav className="container mx-auto flex items-center justify-between gap-3 py-3 px-4 sm:px-6">
             <Link to="/" className="flex items-center gap-3 group min-w-0">
               <img
@@ -63,7 +63,7 @@ export function Layout({ children }: PropsWithChildren) {
                 alt="Steel Wing"
                 className="h-8 w-8 animate-float drop-shadow"
               />
-              <span className="font-minecrafter text-lg sm:text-xl title-glow tracking-wide group-hover:brightness-110 transition truncate">
+              <span className="font-minecrafter text-lg sm:text-xl tracking-wide text-white truncate">
                 Steel Wing
               </span>
             </Link>
@@ -76,7 +76,7 @@ export function Layout({ children }: PropsWithChildren) {
               <button
                 aria-label="Search"
                 onClick={() => setSearchOpen(true)}
-                className="px-3 py-2 rounded-xl bg-white/10 border border-white/20 text-white/90 hover-glow"
+                className="px-3 py-2 rounded-xl bg-[#0b1a14]/60 border border-[#0f4b2e]/60 text-white/90 hover-glow"
               >
                 <svg
                   width="18"
@@ -97,7 +97,7 @@ export function Layout({ children }: PropsWithChildren) {
               <button
                 aria-label="Search"
                 onClick={() => setSearchOpen(true)}
-                className="px-3 py-2 rounded-xl bg-white/10 border border-white/20 text-white/90 hover-glow"
+                className="px-3 py-2 rounded-xl bg-[#0b1a14]/60 border border-[#0f4b2e]/60 text-white/90 hover-glow"
               >
                 <svg
                   width="18"
@@ -114,7 +114,7 @@ export function Layout({ children }: PropsWithChildren) {
               <button
                 aria-label="Menu"
                 onClick={() => setMobileOpen((v) => !v)}
-                className="px-3 py-2 rounded-xl bg-white/10 border border-white/20 text-white/90 hover-glow"
+                className="px-3 py-2 rounded-xl bg-[#0b1a14]/60 border border-[#0f4b2e]/60 text-white/90 hover-glow"
               >
                 <svg
                   width="20"
