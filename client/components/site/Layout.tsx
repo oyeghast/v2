@@ -24,8 +24,8 @@ function ActiveLink({
         [
           "px-4 py-2 rounded-xl transition-colors hover-glow",
           isActive
-            ? "text-white bg-primary/80 border border-white/30"
-            : "text-slate-800/90 dark:text-slate-100/90 bg-white/10 border border-white/20 hover:text-white",
+            ? "text-white bg-[#0f4b2e] border border-[#1f8d56]/60"
+            : "text-white/90 bg-[#0b1a14]/60 border border-[#0f4b2e]/60 hover:text-white",
         ].join(" ")
       }
     >
