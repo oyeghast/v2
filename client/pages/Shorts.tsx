@@ -1,38 +1,22 @@
 import Reveal from "@/components/site/Reveal";
 import { SHORTS } from "@/data/shorts";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import LiteYouTube from "@/components/site/LiteYouTube";
 import { fetchYouTubeTitles } from "@/lib/yt";
 import { SHORT_LINKS } from "@/data/shortLinks";
+import { usePinnedScroll } from "@/hooks/use-pinned-scroll";
 
 export default function Shorts() {
   const [params] = useSearchParams();
   const [titles, setTitles] = useState<Record<string, string>>({});
-  const scrolledRef = useRef(false);
   useEffect(() => {
     fetchYouTubeTitles(SHORTS.map((s) => s.id)).then(setTitles);
   }, []);
-  useEffect(() => {
-    const id = params.get("s");
-    if (!id) return;
-    if (scrolledRef.current) return;
-    const el = document.getElementById(`short-${id}`);
-    if (el) {
-      scrolledRef.current = true;
-      const scrollNow = () => el.scrollIntoView({ behavior: "auto", block: "start" });
-      scrollNow();
-      const r1 = requestAnimationFrame(scrollNow);
-      const t2 = setTimeout(scrollNow, 700);
-      el.classList.add("search-highlight");
-      const t = setTimeout(() => el.classList.remove("search-highlight"), 2600);
-      return () => {
-        cancelAnimationFrame(r1);
-        clearTimeout(t2);
-        clearTimeout(t);
-      };
-    }
-  }, [params]);
+
+  const shortId = params.get("s");
+  const targetEl = shortId ? document.getElementById(`short-${shortId}`) : null;
+  usePinnedScroll(targetEl, { durationMs: 1600, block: "start", behavior: "auto" });
 
   return (
     <section className="relative py-16 container mx-auto">
