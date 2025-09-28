@@ -32,11 +32,11 @@ export default function VideoHero() {
       className="relative w-full h-[100svh] min-h-screen overflow-hidden"
       style={{ backgroundColor: "#05160e" }}
     >
-      {/* Center the 16:9 video and scale it to fit without cropping (YouTube-like letterboxing) */}
-      <div className="absolute inset-0 grid place-items-center">
+      {/* Top-align the 16:9 video (YouTube-like letterboxing) so it touches the navbar bottom with no gap */}
+      <div className="absolute inset-0">
         <video
           ref={videoRef}
-          className="pointer-events-none h-full w-full object-contain"
+          className="pointer-events-none h-full w-full object-contain object-top"
           src="https://cdn.builder.io/o/assets%2F9fb80d7fad534337856f857bfc00a930%2Fd35953d587e640b49d959907a5ffa9cf?alt=media&token=63535c1b-a53a-42e8-9df1-39582fa493ef&apiKey=9fb80d7fad534337856f857bfc00a930"
           aria-hidden="true"
           role="presentation"
