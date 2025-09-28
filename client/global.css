@@ -1,0 +1,453 @@
+/** @import must precede all other statements */
+@import url("https://fonts.cdnfonts.com/css/minecrafter");
+@import url("https://fonts.cdnfonts.com/css/minecraftia");
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&display=swap");
+@import url("https://fonts.cdnfonts.com/css/rebellion-squad");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * Tailwind CSS theme
+   * tailwind.config.ts expects the following color variables to be expressed as HSL values.
+   */
+  :root {
+    /* Metallic blue-white palette */
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 210 40% 99%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 210 40% 99%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 222 80% 60%; /* metallic blue */
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 30% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 30% 95%;
+    --muted-foreground: 216 15% 46%;
+
+    --accent: 210 40% 96%;
+    --accent-foreground: 222 60% 20%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 31% 91%;
+    --input: 214 31% 91%;
+    --ring: 222 80% 60%;
+
+    --radius: 0.9rem;
+
+    --sidebar-background: 210 33% 98%;
+    --sidebar-foreground: 222 16% 28%;
+    --sidebar-primary: 222 80% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 97%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 214 31% 91%;
+    --sidebar-ring: 217 91% 60%;
+  }
+
+  .dark {
+    --background: 222 40% 6%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 40% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 40% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 40% 10%;
+
+    --secondary: 220 18% 16%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 220 18% 16%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 220 18% 16%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 18% 20%;
+    --input: 220 18% 20%;
+    --ring: 217 91% 60%;
+
+    --sidebar-background: 222 30% 10%;
+    --sidebar-foreground: 240 5% 96%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 20% 14%;
+    --sidebar-accent-foreground: 240 5% 96%;
+    --sidebar-border: 222 20% 18%;
+    --sidebar-ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply text-foreground antialiased;
+    background-color: #101616;
+    font-family:
+      Minecraftia,
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      Segoe UI,
+      Roboto,
+      Helvetica,
+      Arial,
+      "Apple Color Emoji",
+      "Segoe UI Emoji";
+    background-attachment: fixed;
+    background-image: none;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: Minecrafter, ui-sans-serif, system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-white/10 dark:bg-white/5 backdrop-blur-xl border border-white/20 rounded-2xl;
+  }
+  .hover-glow {
+    @apply transition duration-300 ease-out hover:shadow-glow hover:-translate-y-0.5;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-xl font-semibold text-white bg-primary shadow-glow hover:brightness-110 hover:scale-[1.02] transition-all duration-300;
+  }
+  .btn-download {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-xl font-semibold text-slate-900 bg-gradient-to-r from-[#72b5ff] via-[#5d7ff8] to-[#9fd2ff] hover:from-[#9fd2ff] hover:to-[#72b5ff] shadow-[0_0_24px_rgba(93,127,248,.6)] hover:shadow-[0_0_36px_rgba(114,181,255,.8)] transition-all duration-300 hover:scale-[1.03];
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+  .title-glow {
+    text-shadow:
+      0 0 12px rgba(130, 170, 255, 0.65),
+      0 0 30px rgba(130, 170, 255, 0.35);
+  }
+  .outline-glow {
+    box-shadow:
+      0 0 0 2px rgba(130, 170, 255, 0.35),
+      0 0 30px rgba(130, 170, 255, 0.4) inset;
+  }
+  .minecraft-grid {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+  .aspect-9-16 {
+    aspect-ratio: 9 / 16;
+  }
+
+  /* Metallic animated title */
+  .metallic-title {
+    background-image: linear-gradient(
+      110deg,
+      #e9f0ff 0%,
+      #bcd0ff 12%,
+      #7ea1ff 27%,
+      #5d7ff8 40%,
+      #9fb2ff 55%,
+      #e9f0ff 70%,
+      #bcd0ff 82%,
+      #7ea1ff 92%,
+      #e9f0ff 100%
+    );
+    background-size: 220% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: 0.06em;
+    text-shadow:
+      0 2px 0 rgba(255, 255, 255, 0.65),
+      0 0 24px rgba(130, 170, 255, 0.45),
+      0 0 48px rgba(130, 170, 255, 0.25);
+    animation: metal-sheen 6s ease-in-out infinite alternate;
+  }
+
+  .forest-title {
+    background-image: linear-gradient(180deg,#a9ff88 0%,#4bc267 35%,#2b8b4f 60%,#0f4b2e 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow:
+      0 2px 0 rgba(255,255,255,0.55),
+      0 0 30px rgba(60,180,100,0.35),
+      0 0 60px rgba(40,120,80,0.25);
+  }
+}
+
+@keyframes metal-sheen {
+  0% {
+    background-position: 0% 50%;
+    filter: saturate(1);
+  }
+  100% {
+    background-position: 200% 50%;
+    filter: saturate(1.15);
+  }
+}
+
+/* Layer bobbing animations for hero */
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+@keyframes bob-med {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-16px);
+  }
+}
+@keyframes bob-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+@keyframes bob-fast {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-bob {
+  animation: bob 9s ease-in-out infinite;
+}
+.animate-bob-med {
+  animation: bob-med 11s ease-in-out infinite;
+}
+.animate-bob-slow {
+  animation: bob-slow 13s ease-in-out infinite;
+}
+.animate-bob-fast {
+  animation: bob-fast 7.5s ease-in-out infinite;
+}
+
+/* Clip paths to form stylized hills/valleys */
+.clip-hill-1 {
+  clip-path: polygon(
+    0% 60%,
+    10% 56%,
+    20% 58%,
+    30% 52%,
+    40% 55%,
+    50% 50%,
+    60% 54%,
+    70% 49%,
+    80% 52%,
+    90% 48%,
+    100% 50%,
+    100% 100%,
+    0% 100%
+  );
+}
+.clip-hill-2 {
+  clip-path: polygon(
+    0% 62%,
+    8% 58%,
+    18% 60%,
+    28% 54%,
+    38% 58%,
+    48% 53%,
+    58% 57%,
+    68% 52%,
+    78% 56%,
+    88% 50%,
+    100% 54%,
+    100% 100%,
+    0% 100%
+  );
+}
+.clip-hill-3 {
+  clip-path: polygon(
+    0% 68%,
+    10% 62%,
+    22% 66%,
+    35% 58%,
+    48% 64%,
+    60% 56%,
+    72% 62%,
+    84% 57%,
+    94% 60%,
+    100% 58%,
+    100% 100%,
+    0% 100%
+  );
+}
+.clip-foreground {
+  clip-path: polygon(
+    0% 72%,
+    12% 64%,
+    24% 70%,
+    36% 60%,
+    48% 68%,
+    60% 58%,
+    72% 66%,
+    84% 60%,
+    96% 64%,
+    100% 62%,
+    100% 100%,
+    0% 100%
+  );
+}
+
+/* Futuristic blue highlight with animated dotted outline */
+@keyframes flash-highlight {
+  0% { box-shadow: 0 0 0 0 rgba(93,127,248,0.0), 0 0 0 0 rgba(130,170,255,0.0); transform: scale(1); }
+  20% { box-shadow: 0 0 0 6px rgba(93,127,248,0.45), 0 0 36px rgba(130,170,255,0.55); transform: scale(1.01); }
+  60% { box-shadow: 0 0 0 4px rgba(93,127,248,0.35), 0 0 28px rgba(130,170,255,0.45); transform: scale(1.005); }
+  100% { box-shadow: 0 0 0 0 rgba(93,127,248,0.0), 0 0 0 rgba(130,170,255,0.0); transform: scale(1); }
+}
+.search-highlight { position: relative; animation: flash-highlight 2.6s ease-in-out both; }
+.search-highlight::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  padding: 4px; /* border thickness */
+  background: repeating-linear-gradient(90deg, rgba(93,127,248,.95) 0 6px, rgba(93,127,248,0) 6px 12px);
+  background-size: 24px 100%;
+  animation: dotline 2.4s linear infinite;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+@keyframes dotline { from { background-position: 0 0; } to { background-position: 24px 0; } }
+
+/* Background helpers */
+.bg-metallic {
+  background:
+    radial-gradient(
+      1200px 600px at 10% 0%,
+      rgba(166, 184, 255, 0.35),
+      transparent 60%
+    ),
+    radial-gradient(
+      1200px 600px at 90% 0%,
+      rgba(200, 220, 255, 0.25),
+      transparent 60%
+    ),
+    linear-gradient(180deg, hsl(210 40% 98%), hsl(210 30% 94%));
+}
+.bg-metallic-dark {
+  background:
+    radial-gradient(
+      1200px 600px at 10% 0%,
+      rgba(82, 112, 194, 0.18),
+      transparent 60%
+    ),
+    radial-gradient(
+      1200px 600px at 90% 0%,
+      rgba(82, 112, 194, 0.12),
+      transparent 60%
+    ),
+    linear-gradient(180deg, hsl(222 30% 8%), hsl(222 30% 5%));
+}
+
+/* Wing background */
+.wing-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("/wing.svg");
+  background-repeat: no-repeat;
+  background-size: 480px 480px;
+  background-position: right -120px top 20%;
+  opacity: 0.25;
+  filter: drop-shadow(0 0 24px rgba(130, 170, 255, 0.6));
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Subtle shader-like overlay for hero */
+.shader-overlay {
+  background: url("/bg-minecraft.svg") center/cover no-repeat fixed;
+  filter: blur(4px) saturate(1.05) brightness(1.02);
+  image-rendering: pixelated;
+}
+
+/* Shimmer utility background */
+.shimmer-bg {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+}
+
+/* Emerald title for logo */
+.emerald-title {
+  background-image: linear-gradient(180deg,#a9ff88 0%,#5be07f 40%,#1f8d56 75%,#0f4b2e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow:
+    0 2px 0 rgba(180,255,200,0.35),
+    0 0 24px rgba(76,238,140,0.55),
+    0 0 48px rgba(76,238,140,0.35);
+}
+
+/* Decorative CSS wings for logo */
+.wing { display:inline-block; width:28px; height:18px; background: linear-gradient(180deg,#8ef5b2,#38b26f); filter: drop-shadow(0 0 14px rgba(76,238,140,.6)); clip-path: polygon(0% 50%, 30% 0%, 100% 0%, 70% 50%, 100% 100%, 30% 100%); transform-origin: center left; animation: wing-flap 2.2s ease-in-out infinite; }
+.wing-right { transform: scaleX(-1); transform-origin: center right; }
+@keyframes wing-flap { 0%,100% { transform: rotate(-6deg); } 50% { transform: rotate(6deg); } }
+
+/* Idle bounce for foreground character */
+@keyframes idle-bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+.animate-idle-bounce { animation: idle-bounce 2.4s ease-in-out infinite; }
+
+/* Horizontal sway */
+@keyframes sway-x { 0%,100% { transform: translateX(0); } 50% { transform: translateX(6px); } }
+.animate-sway-x { animation: sway-x 4.6s ease-in-out infinite; }
+
+/* Leaf chips for depth */
+.leaf { position:absolute; width:34px; height:14px; background:linear-gradient(180deg,#2a6b47,#184f34); border-radius: 14px 14px 14px 2px; transform: rotate(-10deg); opacity:.85; filter: drop-shadow(0 0 10px rgba(76,238,140,.25)); animation: leaf-drift 9s ease-in-out infinite; }
+@keyframes leaf-drift { 0%,100% { transform: translateX(0) translateY(0) rotate(-10deg); } 50% { transform: translateX(12px) translateY(4px) rotate(-2deg); } }
+
+/* Grass silhouette */
+.grass-clip { clip-path: polygon(0% 40%, 6% 45%, 10% 38%, 14% 44%, 18% 36%, 22% 46%, 26% 38%, 30% 44%, 34% 36%, 38% 46%, 42% 38%, 46% 44%, 50% 36%, 54% 46%, 58% 36%, 62% 44%, 66% 36%, 70% 46%, 74% 36%, 78% 44%, 82% 36%, 86% 46%, 90% 38%, 94% 44%, 100% 40%, 100% 100%, 0% 100%); }
