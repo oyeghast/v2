@@ -1,7 +1,7 @@
 import Reveal from "@/components/site/Reveal";
 import { FILES, type FileItem } from "@/data/files";
 import { BUNDLES } from "@/data/bundles";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 import { usePinnedScroll } from "@/hooks/use-pinned-scroll";
 
@@ -13,10 +13,12 @@ export default function Files() {
   usePinnedScroll(targetEl, { durationMs: 1600, block: "start", behavior: "auto" });
 
   // Glow the matched card for 4s when navigated from search
-  if (fileName && targetEl) {
+  useEffect(() => {
+    if (!fileName || !targetEl) return;
     targetEl.classList.add("search-glow-green");
-    setTimeout(() => targetEl.classList.remove("search-glow-green"), 4000);
-  }
+    const t = setTimeout(() => targetEl.classList.remove("search-glow-green"), 4000);
+    return () => clearTimeout(t);
+  }, [fileName, targetEl]);
 
   const activeBundle = useMemo(() => {
     const id = params.get("bundle");
