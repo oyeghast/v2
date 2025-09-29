@@ -9,14 +9,23 @@ export default function Files() {
   const [params] = useSearchParams();
 
   const fileName = params.get("f");
-  const targetEl = fileName ? document.getElementById(`file-${encodeURIComponent(fileName)}`) : null;
-  usePinnedScroll(targetEl, { durationMs: 1600, block: "start", behavior: "auto" });
+  const targetEl = fileName
+    ? document.getElementById(`file-${encodeURIComponent(fileName)}`)
+    : null;
+  usePinnedScroll(targetEl, {
+    durationMs: 1600,
+    block: "start",
+    behavior: "auto",
+  });
 
   // Glow the matched card for 4s when navigated from search
   useEffect(() => {
     if (!fileName || !targetEl) return;
     targetEl.classList.add("search-glow-green");
-    const t = setTimeout(() => targetEl.classList.remove("search-glow-green"), 4000);
+    const t = setTimeout(
+      () => targetEl.classList.remove("search-glow-green"),
+      4000,
+    );
     return () => clearTimeout(t);
   }, [fileName, targetEl]);
 
@@ -48,24 +57,42 @@ export default function Files() {
           <img
             src={f.logo}
             alt={`${f.name} logo`}
-            className="h-16 w-16 object-contain" loading="lazy"
+            className="h-16 w-16 object-contain"
+            loading="lazy"
             onError={(e) => {
               const t = e.target as HTMLImageElement;
-              if (t.src !== window.location.origin + "/placeholder.svg") t.src = "/placeholder.svg";
+              if (t.src !== window.location.origin + "/placeholder.svg")
+                t.src = "/placeholder.svg";
             }}
           />
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-3">
-            <h3 className="font-minecrafter text-lg md:text-2xl text-white/95 break-words leading-tight">{f.name}</h3>
+            <h3 className="font-minecrafter text-lg md:text-2xl text-white/95 break-words leading-tight">
+              {f.name}
+            </h3>
             <span className="text-[10px] md:text-xs px-2 py-1 rounded-md bg-[#0f4b2e]/20 text-[#1f8d56] border border-[#1f8d56]/40 whitespace-nowrap">
               {f.tag}
             </span>
           </div>
-          <p className="mt-2 text-white/90 leading-relaxed text-sm md:text-base break-words">{f.desc}</p>
+          <p className="mt-2 text-white/90 leading-relaxed text-sm md:text-base break-words">
+            {f.desc}
+          </p>
           <div className="mt-4 md:mt-5">
-            <a href={f.link} target="_blank" rel="noopener noreferrer" className="btn-download inline-flex gap-2 animate-bounce-in">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <a
+              href={f.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-download inline-flex gap-2 animate-bounce-in"
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
                 <path d="M12 5v14M19 12l-7 7-7-7" />
               </svg>
               Download
@@ -77,7 +104,10 @@ export default function Files() {
   );
 
   return (
-    <section className="relative py-10 sm:py-12 container mx-auto" style={{ backgroundColor: "#05160e" }}>
+    <section
+      className="relative py-10 sm:py-12 container mx-auto"
+      style={{ backgroundColor: "#05160e" }}
+    >
       <Reveal>
         <h1 className="text-3xl md:text-5xl font-minecrafter text-center mb-6 text-white">
           Downloads

@@ -17,8 +17,12 @@ export default function VideoHero() {
     };
     const onOrientation = () => tryPlay();
     v.addEventListener("canplay", onCanPlay as any, { passive: true } as any);
-    document.addEventListener("visibilitychange", onVisibility, { passive: true } as any);
-    window.addEventListener("orientationchange", onOrientation, { passive: true } as any);
+    document.addEventListener("visibilitychange", onVisibility, {
+      passive: true,
+    } as any);
+    window.addEventListener("orientationchange", onOrientation, {
+      passive: true,
+    } as any);
     return () => {
       v.removeEventListener("canplay", onCanPlay as any);
       document.removeEventListener("visibilitychange", onVisibility as any);
@@ -27,7 +31,11 @@ export default function VideoHero() {
   }, []);
 
   return (
-    <section id="home-video" className="relative w-full" style={{ backgroundColor: "#05160e" }}>
+    <section
+      id="home-video"
+      className="relative w-full"
+      style={{ backgroundColor: "#05160e" }}
+    >
       <div className="mx-auto w-full max-w-[1400px] px-0">
         <div className="relative w-full aspect-[16/9] max-h-[70vh]">
           <video
