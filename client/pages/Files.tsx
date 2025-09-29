@@ -40,10 +40,10 @@ export default function Files() {
   const Card = ({ f }: { f: FileItem }) => (
     <article
       id={`file-${encodeURIComponent(f.name)}`}
-      className="rounded-2xl overflow-hidden hover-glow bg-transparent border scroll-mt-24"
+      className="rounded-2xl overflow-visible hover-glow bg-transparent border scroll-mt-24"
       style={{ borderColor: "#0f4b2e" }}
     >
-      <div className="flex flex-col sm:flex-row gap-5 p-5 sm:p-6 items-start sm:items-center">
+      <div className="flex flex-col lg:flex-row gap-5 p-4 sm:p-5 items-start lg:items-center">
         <div className="shrink-0 rounded-xl bg-white/15 p-2 border border-white/30 shadow-glow self-start">
           <img
             src={f.logo}
