@@ -19,8 +19,8 @@ export default function HomeCategories() {
   ];
 
   return (
-    <section className="w-full -mt-6 sm:-mt-8 lg:-mt-10" style={{ backgroundColor: "#05160e" }}>
-      <div className="container mx-auto px-4 pt-6 pb-10 sm:pt-6">
+    <section className="w-full" style={{ backgroundColor: "#05160e" }}>
+      <div className="container mx-auto px-4 pt-3 pb-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {items.map((it) => (
             <article

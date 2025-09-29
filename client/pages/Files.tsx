@@ -12,6 +12,12 @@ export default function Files() {
   const targetEl = fileName ? document.getElementById(`file-${encodeURIComponent(fileName)}`) : null;
   usePinnedScroll(targetEl, { durationMs: 1600, block: "start", behavior: "auto" });
 
+  // Glow the matched card for 4s when navigated from search
+  if (fileName && targetEl) {
+    targetEl.classList.add("search-glow-green");
+    setTimeout(() => targetEl.classList.remove("search-glow-green"), 4000);
+  }
+
   const activeBundle = useMemo(() => {
     const id = params.get("bundle");
     if (!id) return null;

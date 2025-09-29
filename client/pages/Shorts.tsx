@@ -17,6 +17,14 @@ export default function Shorts() {
   const shortId = params.get("s");
   const targetEl = shortId ? document.getElementById(`short-${shortId}`) : null;
   usePinnedScroll(targetEl, { durationMs: 1600, block: "start", behavior: "auto" });
+  useEffect(() => {
+    if (!shortId) return;
+    const el = document.getElementById(`short-${shortId}`);
+    if (!el) return;
+    el.classList.add("search-glow-green");
+    const t = setTimeout(() => el.classList.remove("search-glow-green"), 4000);
+    return () => clearTimeout(t);
+  }, [shortId]);
 
   return (
     <section className="relative py-16 container mx-auto">
