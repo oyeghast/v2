@@ -31,7 +31,8 @@ export default function Shorts() {
           <Reveal key={s.id} delay={i * 80}>
             <div
               id={`short-${s.id}`}
-              className="glass-panel outline-glow p-3 hover-glow scroll-mt-24"
+              className="rounded-2xl p-3 hover-glow scroll-mt-24 bg-transparent border"
+              style={{ borderColor: "#0f4b2e" }}
             >
               <LiteYouTube id={s.id} title={titles[s.id] || s.title} />
               <p className="mt-3 text-center text-white">{titles[s.id] || s.title}</p>
