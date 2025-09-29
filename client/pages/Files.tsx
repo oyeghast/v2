@@ -50,7 +50,7 @@ export default function Files() {
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-3">
             <h3 className="font-minecrafter text-lg md:text-2xl text-white/95 break-words leading-tight">{f.name}</h3>
-            <span className="text-[10px] md:text-xs px-2 py-1 rounded-md bg-primary/20 text-primary border border-primary/40 whitespace-nowrap">
+            <span className="text-[10px] md:text-xs px-2 py-1 rounded-md bg-[#0f4b2e]/20 text-[#1f8d56] border border-[#1f8d56]/40 whitespace-nowrap">
               {f.tag}
             </span>
           </div>
@@ -69,7 +69,7 @@ export default function Files() {
   );
 
   return (
-    <section className="relative py-16 container mx-auto">
+    <section className="relative py-12 sm:py-14 container mx-auto" style={{ backgroundColor: "#05160e" }}>
       <Reveal>
         <h1 className="text-4xl md:text-6xl font-minecrafter title-glow text-center mb-10">
           Files Showcase
